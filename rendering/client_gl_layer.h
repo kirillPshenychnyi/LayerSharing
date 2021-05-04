@@ -4,7 +4,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ClientGlLayer : CAOpenGLLayer
-
 - (id)initWithIndex:(int)index;
 @end
 

@@ -6,4 +6,4 @@
   - (void)applicationWillTerminate:(NSNotification *)aNotification {
       ipc::Ipc::instance().terminate();
   }
-  @end
+@end
