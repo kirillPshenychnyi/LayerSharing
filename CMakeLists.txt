@@ -10,10 +10,10 @@ add_executable(CALayers main.mm rendering/remote_layer_api.h
         rendering/client_gl_layer.mm rendering/client_gl_layer.h
         ipc/ipc.h ipc/ipc.mm rendering/server_main_window.h
         rendering/server_main_window.mm
-        application/server_app.mm
-        application/server_app.h
-        application/client_app.mm
-        application/client_app.h
+        application/host_app.mm
+        application/host_app.h
+        application/renderer_app.mm
+        application/renderer_app.h
         application/app_delegate.h
         application/app_delegate.mm)
 

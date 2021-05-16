@@ -1,10 +1,10 @@
-#include "server_app.h"
+#include "host_app.h"
 #include "app_delegate.h"
 #include "ipc/ipc.h"
 #include "rendering/remote_layer_api.h"
 #include "rendering/server_main_window.h"
 
-void ServerApp::run(int windows_count) {
+void HostApp::run(int windows_count) {
   [NSApplication sharedApplication];
 
   [NSApp setDelegate: [AppDelegate new]];
@@ -19,7 +19,7 @@ void ServerApp::run(int windows_count) {
   [NSApp run];
 }
 
-void ServerApp::initWindows(int windows_count) {
+void HostApp::initWindows(int windows_count) {
   for (int i = 0; i < windows_count; ++i) {
     ServerMainWindow* window = [[ServerMainWindow alloc]
         initWithContentRect:NSMakeRect(40*i, 40*i, 480, 480)
@@ -41,7 +41,7 @@ void ServerApp::initWindows(int windows_count) {
   }
 }
 
-CALayerHost* ServerApp::getLayerHost() {
+CALayerHost*HostApp::getLayerHost() {
     CAContextID context_id = 0;
     ipc::Ipc::instance().read_data(&context_id);
     printf("Server: Read the context ID and creating a CALayerHost using it\n");

@@ -1,6 +1,6 @@
 #define GL_SILENCE_DEPRECATION
 
-#import "client_app.h"
+#import "renderer_app.h"
 #import "app_delegate.h"
 #import "rendering/client_gl_layer.h"
 #import "rendering/remote_layer_api.h"
@@ -12,14 +12,14 @@
 @implementation ClientApplication : NSApplication
 @end
 
-void ClientApp::run(int windows_count) {
+void RendererApp::run(int windows_count) {
   [ClientApplication sharedApplication];
   [NSApp setDelegate: [AppDelegate new]];
   initLayers(windows_count);
   [NSApp run];
 }
 
-void ClientApp::initLayers(int windows_count) {
+void RendererApp::initLayers(int windows_count) {
   for (int i = 0; i < windows_count; ++i) {
     printf("Client: Creating a regular CALayer to export\n");
     ClientGlLayer *gl_layer = [[ClientGlLayer alloc] initWithIndex:i];
@@ -31,7 +31,7 @@ void ClientApp::initLayers(int windows_count) {
   }
 }
 
-void ClientApp::exportLayer(CALayer* gl_layer) {
+void RendererApp::exportLayer(CALayer* gl_layer) {
   NSDictionary* dict = [[NSDictionary alloc] init];
   CGSConnectionID connection_id = CGSMainConnectionID();
   CAContext* remoteContext = [CAContext contextWithCGSConnection:connection_id options:dict];
@@ -41,6 +41,6 @@ void ClientApp::exportLayer(CALayer* gl_layer) {
 
   printf("Client: Sending the ID of the context back to the server\n");
   CAContextID contextId = [remoteContext contextId];
-  // Send the contextId to the ServerApp
+  // Send the contextId to the HostApp
   ipc::Ipc::instance().write_data(&contextId);
 }

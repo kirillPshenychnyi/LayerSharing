@@ -6,11 +6,11 @@
 
 @class CALayerHost;
 
-class ServerApp {
+class HostApp {
 
 public:
-  explicit ServerApp() = default;
-  ~ServerApp() = default;
+  explicit HostApp() = default;
+  ~HostApp() = default;
   void run(int windows_count);
 
 private:
