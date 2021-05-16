@@ -37,7 +37,7 @@ void HostApp::initWindows(int windows_count) {
 
     [[[window contentView] layer] addSublayer:layer_host];
     [layer_host setPosition:CGPointMake(240, 240)];
-    printf("Server: Added the layer to the view hierarchy..\n");
+    printf("Host: Added the layer to the view hierarchy..\n");
   }
 }
 

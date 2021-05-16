@@ -36,10 +36,10 @@ void RendererApp::exportLayer(CALayer* gl_layer) {
   CGSConnectionID connection_id = CGSMainConnectionID();
   CAContext* remoteContext = [CAContext contextWithCGSConnection:connection_id options:dict];
 
-  printf("Client: Setting the CAContext's layer to the CALayer to export\n");
+  printf("Renderer: Setting the CAContext's layer to the CALayer to export\n");
   [remoteContext setLayer:gl_layer];
 
-  printf("Client: Sending the ID of the context back to the server\n");
+  printf("Renderer: Sending the ID of the context back to the server\n");
   CAContextID contextId = [remoteContext contextId];
   // Send the contextId to the HostApp
   ipc::Ipc::instance().write_data(&contextId);
