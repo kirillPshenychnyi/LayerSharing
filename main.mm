@@ -1,6 +1,5 @@
 #include "application/host_app.h"
 #include "application/renderer_app.h"
-#include "ipc/ipc.h"
 
 int main(int argc, char* argv[]) {
   constexpr int kNumberWindows = 2;

@@ -27,7 +27,8 @@ void HostApp::initWindows(int windows_count) {
                     backing:NSBackingStoreBuffered
                       defer:NO];
 
-    [window setTitle:@"CARemoteLayer Example"];
+    [window setTitle:[NSString stringWithFormat:@"CARemoteLayer window #%d",
+                                                i+1]];
     [window makeKeyAndOrderFront:nil];
 
     NSView* view = [window contentView];
