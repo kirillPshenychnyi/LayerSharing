@@ -1,7 +1,5 @@
 #include "host_app.h"
 #include "app_delegate.h"
-#include "ipc/ipc.h"
-#include "rendering/remote_layer_api.h"
 #include "rendering/server_main_window.h"
 
 void HostApp::run(int windows_count) {
@@ -43,10 +41,11 @@ void HostApp::initWindows(int windows_count) {
 }
 
 CALayerHost*HostApp::getLayerHost() {
-    CAContextID context_id = 0;
-    ipc::Ipc::instance().read_data(&context_id);
+    if (context_id_ == 0) {
+      ipc::Ipc::instance().read_data(&context_id_);
+    }
     printf("Server: Read the context ID and creating a CALayerHost using it\n");
     CALayerHost* layer_host = [[CALayerHost alloc] init];
-    [layer_host setContextId:context_id];
+    [layer_host setContextId:context_id_];
     return layer_host;
 }

@@ -5,13 +5,13 @@
 #import <OpenGL/glu.h>
 
 @implementation ClientGlLayer
-  int index_;
   GLfloat phi_;
   GLfloat theta_;
 
-- (id)initWithIndex:(int)index {
+- (id)init {
     if (self = [super init]) {
-       index_ = index;
+       phi_ = 0;
+       theta_ = 0;
     }
     return self;
 }
@@ -20,7 +20,7 @@
     pixelFormat:(CGLPixelFormatObj)pixelFormat
     forLayerTime:(CFTimeInterval)timeInterval
     displayTime:(const CVTimeStamp *)timeStamp {
-      GLfloat grey = index_/20.f;
+      GLfloat grey = 0.05f;
       glClearColor(grey, grey, grey, 1);
       glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 

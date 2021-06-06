@@ -12,23 +12,20 @@
 @implementation ClientApplication : NSApplication
 @end
 
-void RendererApp::run(int windows_count) {
+void RendererApp::run() {
   [ClientApplication sharedApplication];
   [NSApp setDelegate: [AppDelegate new]];
-  initLayers(windows_count);
+  initLayer();
   [NSApp run];
 }
 
-void RendererApp::initLayers(int windows_count) {
-  for (int i = 0; i < windows_count; ++i) {
+void RendererApp::initLayer() {
     printf("Client: Creating a regular CALayer to export\n");
-    ClientGlLayer *gl_layer = [[ClientGlLayer alloc] initWithIndex:i];
+    ClientGlLayer *gl_layer = [[ClientGlLayer alloc] init];
     [gl_layer setBackgroundColor:CGColorCreateGenericRGB(0, 1, 0, 1)];
     [gl_layer setBounds:CGRectMake(0, 0, 480, 480)];
     [gl_layer setAsynchronous:YES];
-
     exportLayer(gl_layer);
-  }
 }
 
 void RendererApp::exportLayer(CALayer* gl_layer) {

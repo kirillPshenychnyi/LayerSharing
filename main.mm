@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     server_app.run(kNumberWindows);
   } else {
     RendererApp client_app;
-    client_app.run(kNumberWindows);
+    client_app.run();
   }
   return 0;
 }

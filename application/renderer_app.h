@@ -11,8 +11,9 @@ public:
   RendererApp() = default;
   ~RendererApp() = default;
 
-  void run(int windows_count);
-  void initLayers(int windows_count);
+  void run();
+private:
+  void initLayer();
   void exportLayer(CALayer* gl_layer);
 };
 
